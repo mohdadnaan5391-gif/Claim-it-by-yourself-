@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Question 1 ❤️</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family: Arial, sans-serif;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#ff9a9e,#fad0c4);
+    padding:20px;
+}
+
+.box{
+    width:100%;
+    max-width:500px;
+    background:rgba(255,255,255,0.15);
+    backdrop-filter:blur(10px);
+    border-radius:25px;
+    padding:30px;
+    text-align:center;
+    color:white;
+    box-shadow:0 8px 25px rgba(0,0,0,0.2);
+}
+
+h1{
+    margin-bottom:15px;
+}
+
+h2{
+    margin-bottom:25px;
+    line-height:1.5;
+}
+
+input{
+    width:100%;
+    padding:14px;
+    border:none;
+    border-radius:12px;
+    font-size:18px;
+    text-align:center;
+    outline:none;
+}
+
+button{
+    margin-top:20px;
+    padding:12px 25px;
+    border:none;
+    border-radius:30px;
+    font-size:18px;
+    cursor:pointer;
+    background:white;
+    color:#ff4d6d;
+    font-weight:bold;
+}
+
+button:hover{
+    transform:scale(1.05);
+}
+
+.message{
+    margin-top:15px;
+    font-size:18px;
+}
+</style>
+
+</head>
+<body>
+
+<div class="box" id="quizBox">
+
+    <h1>Question 1 ❤️</h1>
+
+    <h2>What is my birth date?</h2>
+
+    <input
+        type="text"
+        id="answer"
+        placeholder="Type your answer here..."
+    >
+
+    <button onclick="checkAnswer()">
+        Submit
+    </button>
+
+    <div class="message" id="message"></div>
+
+</div>
+
+<script>
+
+let tries = 0;
+
+function checkAnswer(){
+
+    let answer = document.getElementById("answer")
+    .value
+    .toLowerCase()
+    .trim();
+
+    if(
+        answer === "30-04-2006" ||
+        answer === "30-4-2006" ||
+        answer === "30 april"
+    ){
+
+        document.getElementById("quizBox").innerHTML = `
+            <h1>❤️ Correct ❤️</h1>
+            <p style="font-size:20px;margin-top:15px;">
+                Of course you remember it 😊
+            </p>
+
+            <button onclick="window.location.href='question2.html'">
+                Next Question ➜
+            </button>
+        `;
+
+    }else{
+
+        tries++;
+
+        if(tries < 3){
+
+            document.getElementById("message").innerHTML =
+            "❌ Wrong Answer! Try Again ❤️";
+
+        }else{
+
+            document.getElementById("quizBox").innerHTML = `
+                <h1>😔</h1>
+
+                <h2>
+                Arfa, it's so sad to see that you don't remember my birth date.
+                </h2>
+
+                <p style="margin-top:15px;font-size:18px;">
+                Maybe you forgot it, and that's okay.
+                Let's continue anyway ❤️
+                </p>
+
+                <button onclick="window.location.href='question2.html'">
+                    Next Question ➜
+                </button>
+            `;
+        }
+    }
+}
+
+</script>
+
+</body>
+</html>
